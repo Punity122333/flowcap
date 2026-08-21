@@ -26,6 +26,9 @@ def simulate_borrowers(
         base_income: float = 100.0,
         seed: int = 42,
         ) -> tuple[pd.DataFrame, np.ndarray]:
+
+    if p < 5:
+        raise ValueError("p must be at least 5")
     rng = np.random.default_rng(seed)
     X = rng.normal(size=(n, p))
     m0_X = _m0(X)
